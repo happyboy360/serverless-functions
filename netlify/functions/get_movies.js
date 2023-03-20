@@ -17,3 +17,7 @@ const handler = async (event) => {
         return { statusCode: 500, body: error.toString() }
     }
 }
+
+mongoClient.close();
+
+module.exports = { handler }
