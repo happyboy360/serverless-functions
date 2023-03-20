@@ -1,8 +1,8 @@
 ﻿import fetch from 'node-fetch'
 
 export const handler = async (event, context) => {
-    console.log({ event }, { context })
-    const POKE_API = 'https://pokeapi.co/api/v2/pokedex/kanto'
+    const eventBody = JSON.parse(event.body)
+    const POKE_API = 'https://pokeapi.co/api/v2/pokedex/' + eventBody.region
 
     const response = await fetch(POKE_API)
     const data = await response.json()
