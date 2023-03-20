@@ -40,4 +40,7 @@ const handler = async (event) => {
     }
 }
 
+mongoClient.close();
+
+
 module.exports = { handler }
