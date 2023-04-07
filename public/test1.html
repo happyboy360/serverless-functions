@@ -1,0 +1,25 @@
+<!-- https://www.mongodb.com/developer/languages/javascript/developing-web-application-netlify-serverless-functions-mongodb/ -->
+<!-- https://www.mongodb.com/docs/manual/reference/connection-string/ -->
+<!-- https://stephencook.dev/blog/netlify-mongodb/ -->
+<!-- https://stackoverflow.com/questions/59330183/netlify-lambda-function-timing-out-after-10-seconds -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <h1>MongoDB with Netlify Functions</h1>
+    <ul id="movies"></ul>
+    <script>
+        (async () => {
+            let results = await fetch("/.netlify/functions/get_movies").then(response => response.json());
+            results.forEach(result => {
+                const listItem = document.createElement("li");
+                listItem.innerText = result.title;
+                document.getElementById("movies").appendChild(listItem);
+            });
+        })();
+    </script>
+</body>
+</html>
